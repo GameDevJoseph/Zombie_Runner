@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     CharacterController _controller;
     Animator _anim;
     bool _isOnLedge = false;
-    bool _isOnLadder = false;
     Vector3 _ledgeStandPosition;
     Vector3 _ladderStandPosition;
 
@@ -98,7 +97,6 @@ public class Player : MonoBehaviour
         transform.position = climbPos;
         _controller.enabled = false;
         _anim.SetBool("IsClimbingLadder", true);
-        _isOnLadder = true;
         _ladderStandPosition = standPos;
     }
 
@@ -106,10 +104,6 @@ public class Player : MonoBehaviour
     {
         transform.position = _ladderStandPosition;
         _anim.SetBool("IsClimbingLadder", false);
-        _isOnLadder = false;
         _controller.enabled = true;
     }
-
-    
-
 }
