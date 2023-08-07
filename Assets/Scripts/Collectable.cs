@@ -4,25 +4,17 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-    [SerializeField] float _rotateSpeed = 20f;
-
-    
-
-    private void Update()
-    {
-        if (transform.rotation == Quaternion.Euler(0, -180, 0))
-        {
-            transform.rotation = Quaternion.identity;
-        }
-
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 180f, 0), _rotateSpeed * Time.deltaTime);
-    }
-
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
+            Player player = other.GetComponent<Player>();
+
+            if (player == null)
+                return;
+
+            player.PickedUpMedkit();
+
             Destroy(gameObject);
         }
     }

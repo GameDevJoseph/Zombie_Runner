@@ -19,6 +19,8 @@ public class Ladder : MonoBehaviour
             if (player == null)
                 return;
 
+
+
             player.SetLadderGrabPosition(_climbLadderPosition.position + _climbPositionOffset, _finalStandPosition.position + _finalStandPositionOffset);
 
         }
